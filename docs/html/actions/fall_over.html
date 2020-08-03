@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Behaviors API Documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+<div id="main">
+<!-- Menu -->
+<div id="navigation">
+<br/>
+<h1>Behaviors API</h1>
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Actions</h2>
+<ul class="nowrap">
+  <li><a href="../actions/dumb_jump.html">dumb_jump</a></li>
+  <li><a href="../actions/dumb_walk.html">dumb_walk</a></li>
+  <li><a href="../actions/execute.html">execute</a></li>
+  <li><a href="../actions/execute_shared.html">execute_shared</a></li>
+  <li><strong>fall_over</strong></li>
+  <li><a href="../actions/free_jump.html">free_jump</a></li>
+  <li><a href="../actions/idle.html">idle</a></li>
+  <li><a href="../actions/jump_attack.html">jump_attack</a></li>
+  <li><a href="../actions/jump_out.html">jump_out</a></li>
+  <li><a href="../actions/set_shared_value.html">set_shared_value</a></li>
+  <li><a href="../actions/set_value.html">set_value</a></li>
+  <li><a href="../actions/subtree.html">subtree</a></li>
+  <li><a href="../actions/turn_to_pos.html">turn_to_pos</a></li>
+</ul>
+<h2>Base</h2>
+<ul class="nowrap">
+  <li><a href="../base/action.html">action</a></li>
+  <li><a href="../base/composite.html">composite</a></li>
+  <li><a href="../base/condition.html">condition</a></li>
+  <li><a href="../base/decorator.html">decorator</a></li>
+  <li><a href="../base/node.html">node</a></li>
+  <li><a href="../base/precondition.html">precondition</a></li>
+</ul>
+<h2>Composites</h2>
+<ul class="nowrap">
+  <li><a href="../composites/parallel.html">parallel</a></li>
+  <li><a href="../composites/selector.html">selector</a></li>
+  <li><a href="../composites/sequence.html">sequence</a></li>
+</ul>
+<h2>Conditions</h2>
+<ul class="nowrap">
+  <li><a href="../conditions/compare.html">compare</a></li>
+  <li><a href="../conditions/has_shared_value.html">has_shared_value</a></li>
+  <li><a href="../conditions/has_value.html">has_value</a></li>
+  <li><a href="../conditions/random.html">random</a></li>
+</ul>
+<h2>Decorators</h2>
+<ul class="nowrap">
+  <li><a href="../decorators/failure.html">failure</a></li>
+  <li><a href="../decorators/inverter.html">inverter</a></li>
+  <li><a href="../decorators/repeater.html">repeater</a></li>
+  <li><a href="../decorators/success.html">success</a></li>
+  <li><a href="../decorators/until_failure.html">until_failure</a></li>
+  <li><a href="../decorators/until_success.html">until_success</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/behaviors.html">behaviors</a></li>
+  <li><a href="../modules/bt_mobs.html">bt_mobs</a></li>
+</ul>
+<h2>Guides</h2>
+<ul class="nowrap">
+  <li><a href="../guides/01_getting_started.md.html">Getting Started</a></li>
+  <li><a href="../guides/02_owl_bt.md.html">Example Owl BT Config</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Action <code>fall_over</code></h1>
+<p>The fall-over node inherits from the <a href="../base/action.html#">action</a> base node class and rotates the mob on it's side while
+ optionally playing a fall sound and animation.</p>
+<p> Typically used to represent death of the mob.</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#constructor">constructor (config)</a></td>
+	<td class="summary">Constructs a <a href="../actions/fall_over.html#">fall_over</a> node class instance.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reset">reset ()</a></td>
+	<td class="summary">Resets the <a href="../actions/fall_over.html#">fall_over</a> node's state and stateful properties.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#on_start">on_start (any)</a></td>
+	<td class="summary">Called when the node first runs to set initial values, animations, and play the fall sound (if configured).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#on_step">on_step (...)</a></td>
+	<td class="summary">The main method that handles the processing for this <a href="../actions/fall_over.html#">fall_over</a> node.</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#config">config</a></td>
+	<td class="summary">Configuration table passed into the constructor function.</td>
+	</tr>
+</table>
+<br/>
+<br/>
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "constructor"></a>
+    <strong>constructor (config)</strong>
+    </dt>
+    <dd>
+    Constructs a <a href="../actions/fall_over.html#">fall_over</a> node class instance.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="../actions/fall_over.html#config">config</a></span>
+         The configuration options for this <a href="../actions/fall_over.html#">fall_over</a> node
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "reset"></a>
+    <strong>reset ()</strong>
+    </dt>
+    <dd>
+    Resets the <a href="../actions/fall_over.html#">fall_over</a> node's state and stateful properties.
+    </ul>
+    </ul>
+</dd>
+    <dt>
+    <a name = "on_start"></a>
+    <strong>on_start (any)</strong>
+    </dt>
+    <dd>
+    Called when the node first runs to set initial values, animations, and play the fall sound (if configured).
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">any</span>
+         Any parameters passed to parent node's run call
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "on_step"></a>
+    <strong>on_step (...)</strong>
+    </dt>
+    <dd>
+    The main method that handles the processing for this <a href="../actions/fall_over.html#">fall_over</a> node.  This node will cause the mob to
+ fall over on its side and succeeds when fully on its side.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         Any parameters passed to the node's run method
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+        A string representing the enum <a href="../modules/behaviors.html#states">behaviors.states</a> of "running", or "success".
+    </ol>
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "config"></a>
+    <strong>config</strong>
+    </dt>
+    <dd>
+    Configuration table passed into the constructor function.
+    </ul>
+    </ul>
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">fall_animation</span>
+            <span class="types"><span class="type">string</span></span>
+         The fall animation to apply to the mob while falling over.
+        </li>
+        <li><span class="parameter">fall_sound</span>
+            <span class="types"><span class="type">string</span></span>
+         The sound to play when the falling over operation begins.
+        </li>
+    </ul>
+</dd>
+</dl>
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-08-03 18:22:31 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

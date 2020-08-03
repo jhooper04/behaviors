@@ -1,3 +1,5 @@
+---
+-- @module bt_mobs
 
 --
 -- Based on a modified version of the mobkit mod that uses behavior trees instead of queues
@@ -37,17 +39,32 @@ local neighbors ={
 	{x=1,z=-1}
 	}
 
+--- Mob gravitational acceleration
 bt_mobs.gravity = -9.8
+
+--- Mob default friction
 bt_mobs.friction = 0.4
+
+--- The terminal velocity for falling mobs
 bt_mobs.terminal_velocity = math_sqrt(2*-bt_mobs.gravity*20) -- 20 meter fall = dead
+
+--- velocity at which a mob will not be damaged
 bt_mobs.safe_velocity = math_sqrt(2*-bt_mobs.gravity*5) -- 5 m safe fall
 
+--- Calculate dot product of two vectors
+-- @tparam vector v1 First vector to calculate
+-- @tparam vector v2 Second vector to calculate
+-- @treturn vector Result of the dot product calculation
 function bt_mobs.dot(v1,v2)
 	return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z
 end
 
-function bt_mobs.minmax(v,m)
-	return math_min(math_abs(v),m)*sign(v)
+--- limits a number to within a positive or negative maximum
+-- @number val The value to be limited
+-- @number max The maximum magnitude (positive or negative) the value should be limited to
+-- @treturn number The value within the imposed limit
+function bt_mobs.minmax(val, max)
+	return math_min(math_abs(val), max) * sign(val)
 end
 
 

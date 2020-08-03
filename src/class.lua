@@ -1,6 +1,11 @@
+---
+-- @module behaviors
 
--- class.lua
--- Compatible with Lua 5.1 (not 5.0).
+--- class utility for creating object oriented inheritance hierarchies of tree nodes
+-- @string name The name of the new class to create
+-- @tab[opt] base The Base class of the new class to inherit from
+-- @bool[opt] is_abstract Defines whether or not this class should be directly used as a node type in a behavior tree
+-- @treturn tab New class type
 function behaviors.class(name, base, is_abstract)
     local c = {}    -- a new class instance
     if type(base) == 'table' then
@@ -46,42 +51,3 @@ function behaviors.class(name, base, is_abstract)
 
     return c
 end
-
-
-
-
--- local Object = {}
--- Object.__index = Object
--- function Object:new(...)
--- 	local obj = {}
--- 	setmetatable(obj, self)
-
--- 	obj:constructor(...)
-
--- 	return obj
--- end
-
--- function Object:constructor()
--- end
-
--- function behaviors.class(name, parent, is_abstract)
--- 	parent = parent or Object
--- 	assert(type(parent) == "table" and parent.new)
-
--- 	local class_object = {
--- 		type = name,
--- 		constructor = function(self, ...)
--- 			assert(#({...}) == 0, "Default constructor accepts no arguments. Define a constructor.")
--- 			parent.constructor(self)
--- 		end
--- 	}
--- 	class_object.__index = class_object
-
---     setmetatable(class_object, parent)
-	
--- 	if not is_abstract then
--- 		register(name, class_object)
--- 	end
-
--- 	return class_object
--- end

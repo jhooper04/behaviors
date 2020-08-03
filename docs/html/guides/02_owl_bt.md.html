@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Behaviors API Documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+<div id="main">
+<!-- Menu -->
+<div id="navigation">
+<br/>
+<h1>Behaviors API</h1>
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Guides</h2>
+<ul class="nowrap">
+  <li><a href="../guides/01_getting_started.md.html">Getting Started</a></li>
+  <li><strong>Example Owl BT Config</strong></li>
+</ul>
+<h2>Base</h2>
+<ul class="nowrap">
+  <li><a href="../base/action.html">action</a></li>
+  <li><a href="../base/composite.html">composite</a></li>
+  <li><a href="../base/condition.html">condition</a></li>
+  <li><a href="../base/decorator.html">decorator</a></li>
+  <li><a href="../base/node.html">node</a></li>
+  <li><a href="../base/precondition.html">precondition</a></li>
+</ul>
+<h2>Actions</h2>
+<ul class="nowrap">
+  <li><a href="../actions/dumb_jump.html">dumb_jump</a></li>
+  <li><a href="../actions/dumb_walk.html">dumb_walk</a></li>
+  <li><a href="../actions/execute.html">execute</a></li>
+  <li><a href="../actions/execute_shared.html">execute_shared</a></li>
+  <li><a href="../actions/fall_over.html">fall_over</a></li>
+  <li><a href="../actions/free_jump.html">free_jump</a></li>
+  <li><a href="../actions/idle.html">idle</a></li>
+  <li><a href="../actions/jump_attack.html">jump_attack</a></li>
+  <li><a href="../actions/jump_out.html">jump_out</a></li>
+  <li><a href="../actions/set_shared_value.html">set_shared_value</a></li>
+  <li><a href="../actions/set_value.html">set_value</a></li>
+  <li><a href="../actions/subtree.html">subtree</a></li>
+  <li><a href="../actions/turn_to_pos.html">turn_to_pos</a></li>
+</ul>
+<h2>Composites</h2>
+<ul class="nowrap">
+  <li><a href="../composites/parallel.html">parallel</a></li>
+  <li><a href="../composites/selector.html">selector</a></li>
+  <li><a href="../composites/sequence.html">sequence</a></li>
+</ul>
+<h2>Conditions</h2>
+<ul class="nowrap">
+  <li><a href="../conditions/compare.html">compare</a></li>
+  <li><a href="../conditions/has_shared_value.html">has_shared_value</a></li>
+  <li><a href="../conditions/has_value.html">has_value</a></li>
+  <li><a href="../conditions/random.html">random</a></li>
+</ul>
+<h2>Decorators</h2>
+<ul class="nowrap">
+  <li><a href="../decorators/failure.html">failure</a></li>
+  <li><a href="../decorators/inverter.html">inverter</a></li>
+  <li><a href="../decorators/repeater.html">repeater</a></li>
+  <li><a href="../decorators/success.html">success</a></li>
+  <li><a href="../decorators/until_failure.html">until_failure</a></li>
+  <li><a href="../decorators/until_success.html">until_success</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/behaviors.html">behaviors</a></li>
+  <li><a href="../modules/bt_mobs.html">bt_mobs</a></li>
+</ul>
+</div>
+<div id="content">
+
+<h2>Example Owl BT Config</h2>
+
+<pre>
+{
+    <span class="string">"nodes"</span>: [
+        {
+            <span class="string">"name"</span>: <span class="string">"node"</span>,
+            <span class="string">"icon"</span>: <span class="string">"cube"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"action"</span>,
+            <span class="string">"base"</span>: <span class="string">"node"</span>,
+            <span class="string">"icon"</span>: <span class="string">"check-circle"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"execute"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"description"</span>: <span class="string">"{{function_name}}"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"function_name"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"execute_shared"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"description"</span>: <span class="string">"{{function_name}}"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"function_name"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"set_shared_value"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"edit"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"key"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"value"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"data_type"</span>,
+                    <span class="string">"type"</span>: <span class="string">"enum"</span>,
+                    <span class="string">"values"</span>: [
+                        <span class="string">"string"</span>,
+                        <span class="string">"number"</span>,
+                        <span class="string">"bool"</span>
+                    ]
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"set_value"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"edit"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"key"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"value"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"data_type"</span>,
+                    <span class="string">"type"</span>: <span class="string">"enum"</span>,
+                    <span class="string">"values"</span>: [
+                        <span class="string">"string"</span>,
+                        <span class="string">"number"</span>,
+                        <span class="string">"bool"</span>
+                    ]
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"subtree"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"tree"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"module_name"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"dumb_jump"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"jump_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"dumb_walk"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"walk_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"speed_factor"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"timeout"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"fall_over"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"fall_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"fall_sound"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"free_jump"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"jump_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"jump_velocity"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"idle"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"idle_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"duration"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"jump_attack"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"idle_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"charge_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"charge_sound"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"attack_animation"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"attack_sound"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"jump_out"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: []
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"turn_to_pos"</span>,
+            <span class="string">"base"</span>: <span class="string">"action"</span>,
+            <span class="string">"icon"</span>: <span class="string">"bolt"</span>,
+            <span class="string">"properties"</span>: []
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"composite"</span>,
+            <span class="string">"base"</span>: <span class="string">"node"</span>,
+            <span class="string">"icon"</span>: <span class="string">"cubes"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>,
+            <span class="string">"isComposite"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"parallel"</span>,
+            <span class="string">"base"</span>: <span class="string">"composite"</span>,
+            <span class="string">"icon"</span>: <span class="string">"object-ungroup"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"strategy"</span>,
+                    <span class="string">"default"</span>: <span class="string">"pass_certain"</span>,
+                    <span class="string">"type"</span>: <span class="string">"enum"</span>,
+                    <span class="string">"values"</span>: [
+                        <span class="string">"pass_certain"</span>,
+                        <span class="string">"fail_certain"</span>
+                    ]
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"target_count"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"selector"</span>,
+            <span class="string">"base"</span>: <span class="string">"composite"</span>,
+            <span class="string">"icon"</span>: <span class="string">"question"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"sequence"</span>,
+            <span class="string">"base"</span>: <span class="string">"composite"</span>,
+            <span class="string">"icon"</span>: <span class="string">"arrow-right"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"condition"</span>,
+            <span class="string">"base"</span>: <span class="string">"node"</span>,
+            <span class="string">"icon"</span>: <span class="string">"flag"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"compare"</span>,
+            <span class="string">"base"</span>: <span class="string">"condition"</span>,
+            <span class="string">"icon"</span>: <span class="string">"flag"</span>,
+            <span class="string">"description"</span>: <span class="string">"${{key}} {{predicate}} {{value}}"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"key"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"predicate"</span>,
+                    <span class="string">"type"</span>: <span class="string">"enum"</span>,
+                    <span class="string">"values"</span>: [
+                        <span class="string">"~="</span>,
+                        <span class="string">"=="</span>,
+                        <span class="string">"&gt;="</span>,
+                        <span class="string">"&lt;="</span>,
+                        <span class="string">"&lt;"</span>,
+                        <span class="string">"&gt;"</span>
+                    ]
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"value"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"data_type"</span>,
+                    <span class="string">"type"</span>: <span class="string">"enum"</span>,
+                    <span class="string">"values"</span>: [
+                        <span class="string">"string"</span>,
+                        <span class="string">"number"</span>,
+                        <span class="string">"bool"</span>
+                    ]
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"has_shared_value"</span>,
+            <span class="string">"base"</span>: <span class="string">"condition"</span>,
+            <span class="string">"icon"</span>: <span class="string">"exclamation-circle"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"key"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"has_value"</span>,
+            <span class="string">"base"</span>: <span class="string">"condition"</span>,
+            <span class="string">"icon"</span>: <span class="string">"exclamation-circle"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"key"</span>,
+                    <span class="string">"type"</span>: <span class="string">"string"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"random"</span>,
+            <span class="string">"base"</span>: <span class="string">"condition"</span>,
+            <span class="string">"icon"</span>: <span class="string">"random"</span>,
+            <span class="string">"description"</span>: <span class="string">"Chance {{probability}}"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"probability"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                }
+            ]
+        }
+    ],
+    <span class="string">"decorators"</span>: [
+        {
+            <span class="string">"name"</span>: <span class="string">"decorator"</span>,
+            <span class="string">"icon"</span>: <span class="string">"cubes"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"precondition"</span>,
+            <span class="string">"base"</span>: <span class="string">"decorator"</span>,
+            <span class="string">"icon"</span>: <span class="string">"cubes"</span>,
+            <span class="string">"isAbstract"</span>: <span class="keyword">true</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"failure"</span>,
+            <span class="string">"icon"</span>: <span class="string">"thumbs-o-down"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"inverter"</span>,
+            <span class="string">"icon"</span>: <span class="string">"exchange"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"success"</span>,
+            <span class="string">"icon"</span>: <span class="string">"thumbs-o-up"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"repeater"</span>,
+            <span class="string">"icon"</span>: <span class="string">"recycle"</span>,
+            <span class="string">"description"</span>: <span class="string">"Repeat {{repeat_times}} times"</span>,
+            <span class="string">"properties"</span>: [
+                {
+                    <span class="string">"name"</span>: <span class="string">"repeat_times"</span>,
+                    <span class="string">"type"</span>: <span class="string">"number"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"ignore_failure"</span>,
+                    <span class="string">"default"</span>: <span class="keyword">false</span>,
+                    <span class="string">"type"</span>: <span class="string">"bool"</span>
+                },
+                {
+                    <span class="string">"name"</span>: <span class="string">"once_per_step"</span>,
+                    <span class="string">"default"</span>: <span class="keyword">true</span>,
+                    <span class="string">"type"</span>: <span class="string">"bool"</span>
+                }
+            ]
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"until_failure"</span>,
+            <span class="string">"icon"</span>: <span class="string">"thumbs-o-down"</span>
+        },
+        {
+            <span class="string">"name"</span>: <span class="string">"until_success"</span>,
+            <span class="string">"icon"</span>: <span class="string">"thumbs-o-up"</span>
+        }
+    ],
+    <span class="string">"services"</span>: [
+    ]
+}
+</pre>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-08-03 18:22:31 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

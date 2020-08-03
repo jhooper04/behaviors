@@ -1,8 +1,26 @@
+--- The jump-attack node inherits from the @{action} base node class and causes a mob to jump towards
+-- the target object and punching the target when/if it collides with many configurable animations and sounds.
+-- @action jump_attack
 
 local action = behaviors.action
 local jump_attack = behaviors.class("jump_attack", action)
 behaviors.jump_attack = jump_attack
 
+--- Configuration table passed into the constructor function.
+-- @table config
+-- @tfield string idle_animation The animation to play while idle.
+-- @tfield string charge_animation The animation to play while jumping/lunging.
+-- @tfield string charge_sound The sound to play while jumping/lunging.
+-- @tfield string attack_animation The animation to play while attacking.
+-- @tfield string attack_sound The sound to play while attacking.
+
+--- Required properties set on the node's set object
+-- @table object
+-- @tfield tab target_entity The lua entity table to jump attack.
+-- @tfield number target_height The height of the jumping attack.
+
+--- Constructs a @{jump_attack} node class instance.
+-- @tparam config config The configuration options for this @{jump_attack} node
 function jump_attack:constructor(config)
     action.constructor(self)
     self.idle_animation = config.idle_animation
@@ -16,6 +34,7 @@ function jump_attack:constructor(config)
     self.idle_first_run = true
 end
 
+--- Resets the @{jump_attack} node's state and stateful properties.
 function jump_attack:reset()
     action.reset(self)
     self.phase = 1
@@ -24,10 +43,18 @@ function jump_attack:reset()
     self.idle_first_run = true
 end
 
+--- Called when the node first runs to set initial values.
+-- @function on_start
+-- @param any Any parameters passed to parent node's run call
 function jump_attack:on_start()
     self.target_box = self.object.target_entity.object:get_properties().collisionbox
 end
 
+--- The main method that handles the processing for this @{jump_attack} node. This node will cause the mob to
+-- lunge toward its target entity and attack mid-air. It succeeds when the mob has touched the ground again after
+-- a small delay.
+-- @param ... Any parameters passed to the node's run method
+-- @return A string representing the enum @{behaviors.states} of "running", or "success".
 function jump_attack:on_step(...)
 
     if not bt_mobs.is_alive(self.object.target_entity) then return self:succeed() end
@@ -37,7 +64,7 @@ function jump_attack:on_step(...)
             local vel = self.object.object:get_velocity()
             vel.y = -bt_mobs.gravity * math.sqrt(self.object.target_height * 2 / -bt_mobs.gravity)
             self.object.object:set_velocity(vel)
-            bt_mobs.make_sound(self,'charge')
+            bt_mobs.make_sound(self,self.charge_sound)
             self.phase=2
         else
             if self.idle_animation and self.idle_first_run then
@@ -73,7 +100,7 @@ function jump_attack:on_step(...)
             local vy = self.object.object:get_velocity().y
             self.object.object:set_velocity({ x=dir.x * -3, y=vy, z=dir.z * -3})
                 -- play attack sound if defined
-            bt_mobs.make_sound(self.object,'attack')
+            bt_mobs.make_sound(self.object,self.attack_sound)
             self.phase = 4
         end
     end

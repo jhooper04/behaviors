@@ -1,36 +1,37 @@
+--- Parallel nodes inherit from the @{composite} base node class. Parallel nodes execute each of their
+-- children in order from left to right every time they are run. Parallel nodes can be configured to
+-- succeed when a certain number of children succeed or fail when a certain number of children fail.
+-- @composite parallel
 
 local composite = behaviors.composite
 local parallel = behaviors.class("parallel", composite)
 behaviors.parallel = parallel
 
-local parallel_strategy = setmetatable({
-    FAIL_CERTAIN = "fail_certain",
-    PASS_CERTAIN = "pass_certain",
-}, {
-    __index = function(_, key)
-        error("Invalid parallel strategy: " .. key)
-    end,
-    __newindex = function()
-        error("Attempt to assign to immutable enum 'parallel_strategy'")
-    end,
-    __metatable = false,
-})
-behaviors.parallel_strategy = parallel_strategy
+--- Configuration table passed into the constructor function.
+-- @table config
+-- @tfield tab children The instantiated child nodes of this @{parallel} node.
+-- @tfield enum strategy The @{behaviors.parallel_strategy} enum for pass certain or fail certain.
+-- @tfield number target_count The target number of successes or fails of child nodes.
 
--- Parallel nodes execute their children from left to right.
-
+--- Constructs a @{parallel} node class instance.
+-- @tparam config config The configuration options for this @{parallel} node
 function parallel:constructor(config)
     composite.constructor(self, config)
-    self.strategy = config.strategy or parallel_strategy.PASS_CERTAIN
+    self.strategy = config.strategy or behaviors.parallel_strategy.PASS_CERTAIN
     self.target_count = config.target_count
     self.node_states = {}
 end
 
+--- Resets the @{parallel} node's state and other stateful properties for itself and all of it's children.
 function parallel:reset()
     composite.reset(self)
     self.node_states = {}
 end
 
+--- The main method that handles the processing for this @{parallel} node. Each child is executed in order until the
+-- pass or fail target count is reached.
+-- @param ... Any parameters passed to the node's run method
+-- @return A string representing the enum @{behaviors.states} of "running", "success", or "failed".
 function parallel:on_step(...)
 
     local node_count = #self.children
@@ -47,6 +48,13 @@ function parallel:on_step(...)
     return self:check_target()
 end
 
+--- Counts the number of child nodes that succeeded, failed, or currently running still. If strategy is
+-- PASS_CERTAIN then when the number of successes is equal to or greater than the target count, this @{parallel}
+-- node succeeds. If all children have finished and the target count has not been reached, this @{parallel}
+-- node will fail. If strategy is FAIL_CERTAIN then when the number of failed child nodes is equal to or
+-- greater than the target count, then this @{parallel} node fails. if all the children have
+-- finished and the target count has not been reached, this @{parallel} node will succeed.
+-- @return A string representing the enum @{behaviors.states} of "running", "success", or "failed".
 function parallel:check_target()
     local pass, fail, rest = 0, 0, 0
 
@@ -77,10 +85,12 @@ function parallel:check_target()
     return behaviors.states.RUNNING
 end
 
--- Properties
------------------------------------
+-- Optionally overidden and called when the node begins processing.
+-- @function on_start
+-- @param ... Any parameters passed to parent node's run call
+-- @abstract
 
--- children - (array of nodes) list of child nodes
--- strategy - (enum) PASS_CERTAIN will succeed when the number of child successes is equal to the target_count
---            FAIL_CERTAIN will succeed when the number of child failures is less than the target_count
--- target_count - (int) number of successes or failures to limit the parallel node to before itself succeeds or fails
+--- Optionally overidden and called when the node finishes processing.
+-- @function on_finish
+-- @param ... Any parameters passed to the node's run method
+-- @abstract

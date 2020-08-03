@@ -1,20 +1,43 @@
+--- The dumb_walk node inherits from the @{action} base node class and applies a velocity toward a target position
+-- and setting a walking animation. The action will either succeed on timeout or when the mob reaches
+-- the target position.
+-- @action dumb_walk
 
 local action = behaviors.action
 local dumb_walk = behaviors.class("dumb_walk", action)
 behaviors.dumb_walk = dumb_walk
 
+--- Configuration table passed into the constructor function.
+-- @table config
+-- @tfield string walk_animation The walking animation to apply to the mob while walking.
+-- @tfield number speed_factor How fast the mob should walk.
+-- @tfield number timeout How long should this node should attempt to walk toward the position before it gives up.
+
+--- Required properties set on the node's set object
+-- @table object
+-- @tfield vector target_pos The position vector to walk to in the form {x,y,z} or an actual vector type.
+
+--- Constructs a @{dumb_walk} node class instance.
+-- @tparam config config The configuration options for this @{dumb_walk} node
 function dumb_walk:constructor(config)
     action.constructor(self)
-    self.walk_animation = config.walk_animation
-    self.speed_factor = config.speed_factor
-    self.timer = 3   -- fail safe
+    self.walk_animation = config.walk_animation or "walk"
+    self.speed_factor = config.speed_factor or 1
+    self.timeout = config.timeout or 3
+    self.timer = self.timeout   -- fail safe
 end
 
+--- Resets the @{dumb_walk} node's state and stateful properties.
 function dumb_walk:reset()
     action.reset(self)
-    self.timer = 3
+    self.timer = self.timeout
 end
 
+--- The main method that handles the processing for this @{dumb_walk} node. This node will cause the mob to
+-- walk towards the set target position vector without regard to any obstacles or height changes. returns success
+-- when the mob reaches the target position or the operation times out.
+-- @param ... Any parameters passed to the node's run method
+-- @return A string representing the enum @{behaviors.states} of "running", or "success".
 function dumb_walk:on_step(...)
 
     bt_mobs.animate(self.object, self.walk_animation)
@@ -48,14 +71,6 @@ function dumb_walk:on_step(...)
     return self:running()
 end
 
--- Object requirements
-----------------------------------
-
--- target_pos - (vector) the position vector target to walk to
-
-
--- Properties
------------------------------------
 
 -- function bt_mobs.lq_dumbwalk(self,dest,speed_factor)
 -- 	local timer = 3			-- failsafe

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Behaviors API Documentation</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+<div id="main">
+<!-- Menu -->
+<div id="navigation">
+<br/>
+<h1>Behaviors API</h1>
+<h2>Base</h2>
+<ul class="nowrap">
+  <li><a href="base/action.html">action</a></li>
+  <li><a href="base/composite.html">composite</a></li>
+  <li><a href="base/condition.html">condition</a></li>
+  <li><a href="base/decorator.html">decorator</a></li>
+  <li><a href="base/node.html">node</a></li>
+  <li><a href="base/precondition.html">precondition</a></li>
+</ul>
+<h2>Actions</h2>
+<ul class="nowrap">
+  <li><a href="actions/dumb_jump.html">dumb_jump</a></li>
+  <li><a href="actions/dumb_walk.html">dumb_walk</a></li>
+  <li><a href="actions/execute.html">execute</a></li>
+  <li><a href="actions/execute_shared.html">execute_shared</a></li>
+  <li><a href="actions/fall_over.html">fall_over</a></li>
+  <li><a href="actions/free_jump.html">free_jump</a></li>
+  <li><a href="actions/idle.html">idle</a></li>
+  <li><a href="actions/jump_attack.html">jump_attack</a></li>
+  <li><a href="actions/jump_out.html">jump_out</a></li>
+  <li><a href="actions/set_shared_value.html">set_shared_value</a></li>
+  <li><a href="actions/set_value.html">set_value</a></li>
+  <li><a href="actions/subtree.html">subtree</a></li>
+  <li><a href="actions/turn_to_pos.html">turn_to_pos</a></li>
+</ul>
+<h2>Composites</h2>
+<ul class="nowrap">
+  <li><a href="composites/parallel.html">parallel</a></li>
+  <li><a href="composites/selector.html">selector</a></li>
+  <li><a href="composites/sequence.html">sequence</a></li>
+</ul>
+<h2>Conditions</h2>
+<ul class="nowrap">
+  <li><a href="conditions/compare.html">compare</a></li>
+  <li><a href="conditions/has_shared_value.html">has_shared_value</a></li>
+  <li><a href="conditions/has_value.html">has_value</a></li>
+  <li><a href="conditions/random.html">random</a></li>
+</ul>
+<h2>Decorators</h2>
+<ul class="nowrap">
+  <li><a href="decorators/failure.html">failure</a></li>
+  <li><a href="decorators/inverter.html">inverter</a></li>
+  <li><a href="decorators/repeater.html">repeater</a></li>
+  <li><a href="decorators/success.html">success</a></li>
+  <li><a href="decorators/until_failure.html">until_failure</a></li>
+  <li><a href="decorators/until_success.html">until_success</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="modules/behaviors.html">behaviors</a></li>
+  <li><a href="modules/bt_mobs.html">bt_mobs</a></li>
+</ul>
+<h2>Guides</h2>
+<ul class="nowrap">
+  <li><a href="guides/01_getting_started.md.html">Getting Started</a></li>
+  <li><a href="guides/02_owl_bt.md.html">Example Owl BT Config</a></li>
+</ul>
+</div>
+<div id="content">
+  <h2>Behavior tree system API mod for Minetest for easy, flexible, and complex mob AI or generic uses beyond mobs. </h2>
+<h2>Base</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="base/action.html">action</a></td>
+		<td class="summary">Base abstract action class that inherits properties and methods from the <a href="base/node.html#">node</a> class.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="base/composite.html">composite</a></td>
+		<td class="summary">Base abstract composite class that inherits properties and methods from the <a href="base/node.html#">node</a> class.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="base/condition.html">condition</a></td>
+		<td class="summary">Base abstract condition class that inherits properties and methods from the <a href="base/node.html#">node</a> class.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="base/decorator.html">decorator</a></td>
+		<td class="summary">Base abstract decorator class that inherits properties and methods from the <a href="base/composite.html#">composite</a> class.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="base/node.html">node</a></td>
+		<td class="summary">Base abstract node class that all other node types inherit from.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="base/precondition.html">precondition</a></td>
+		<td class="summary">Base abstract precondition class that inherits properties and methods from the <a href="base/decorator.html#">decorator</a> class.</td>
+	</tr>
+</table>
+<h2>Actions</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="actions/dumb_jump.html">dumb_jump</a></td>
+		<td class="summary">The dumb_jump node inherits from the <a href="base/action.html#">action</a> base node class and performs a simple jump behavior for a mob
+ by applying a jump velocity in the direction it is facing and succeeds when the mob then contacts the ground again.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/dumb_walk.html">dumb_walk</a></td>
+		<td class="summary">The dumb_walk node inherits from the <a href="base/action.html#">action</a> base node class and applies a velocity toward a target position
+ and setting a walking animation.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/execute.html">execute</a></td>
+		<td class="summary">The execute node inherits from the <a href="base/action.html#">action</a> base node class and will execute a function on the node's
+ associated set object.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/execute_shared.html">execute_shared</a></td>
+		<td class="summary">The execute-shared node inherits from the <a href="base/action.html#">action</a> base node class and will execute a function on the node's
+ associated set shared object.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/fall_over.html">fall_over</a></td>
+		<td class="summary">The fall-over node inherits from the <a href="base/action.html#">action</a> base node class and rotates the mob on it's side while
+ optionally playing a fall sound and animation.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/free_jump.html">free_jump</a></td>
+		<td class="summary">The free-jump node inherits from the <a href="base/action.html#">action</a> base node class and applies a vertical jump velocity
+ to the mob and succeeds when the mob's vertical velocity returns to 0 implying it has landed.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/idle.html">idle</a></td>
+		<td class="summary">The idle node inherits from the <a href="base/action.html#">action</a> base node class and plays a configurable animation for a specified
+ amount of time.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/jump_attack.html">jump_attack</a></td>
+		<td class="summary">The jump-attack node inherits from the <a href="base/action.html#">action</a> base node class and causes a mob to jump towards
+ the target object and punching the target when/if it collides with many configurable animations and sounds.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/jump_out.html">jump_out</a></td>
+		<td class="summary">The jump-out node inherits from the <a href="base/action.html#">action</a> base node class and applies a vertical jump velocity
+ to the mob and succeeds when the mob's vertical velocity returns to 0 implying it has landed.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/set_shared_value.html">set_shared_value</a></td>
+		<td class="summary">The set-shared-value node inherits from the <a href="base/action.html#">action</a> base node class and will assign a configured value
+ on the node's associated set shared object based on a key, value, and data type configuration.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/set_value.html">set_value</a></td>
+		<td class="summary">The set-value node inherits from the <a href="base/action.html#">action</a> base node class and will assign a configured value
+ on the node's associated set object based on a key, value, and data type configuration.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/subtree.html">subtree</a></td>
+		<td class="summary">The subtree node inherits from the <a href="base/action.html#">action</a> base node class and will retrieve a registered subtree module
+ and instantiate it so this single action node represents executing an entire subtree of behavior nodes for modularity
+ and simplified complex trees.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="actions/turn_to_pos.html">turn_to_pos</a></td>
+		<td class="summary">The turn-to-pos node inherits from the <a href="base/action.html#">action</a> base node class and will turn the mob incrementally toward
+ the target position on each run of the node and returns success when the mob is facing the target position.</td>
+	</tr>
+</table>
+<h2>Composites</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="composites/parallel.html">parallel</a></td>
+		<td class="summary">Parallel nodes inherit from the <a href="base/composite.html#">composite</a> base node class.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="composites/selector.html">selector</a></td>
+		<td class="summary">Selector Nodes inherit from the <a href="base/composite.html#">composite</a> base node class and execute their children
+ from left to right.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="composites/sequence.html">sequence</a></td>
+		<td class="summary">Sequence nodes inherit from the <a href="base/composite.html#">composite</a> base node class and execute their children
+ from left to right.</td>
+	</tr>
+</table>
+<h2>Conditions</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="conditions/compare.html">compare</a></td>
+		<td class="summary">Compare nodes inherit from the <a href="base/condition.html#">condition</a> base node class and will check a property of the node's set object.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="conditions/has_shared_value.html">has_shared_value</a></td>
+		<td class="summary">The has-shared-value node inherits from the <a href="base/condition.html#">condition</a> base node class and will check if the
+ associated node's set shared object has a property defined (checks if a key is nil on the shared object).</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="conditions/has_value.html">has_value</a></td>
+		<td class="summary">The has-value node inherits from the <a href="base/condition.html#">condition</a> base node class and will check if the
+ associated node's set object has a property defined (checks if a key is nil on the object).</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="conditions/random.html">random</a></td>
+		<td class="summary">The random node inherits from the <a href="base/condition.html#">condition</a> base node class and will randomly succeed or fail based on
+ the configured probability.</td>
+	</tr>
+</table>
+<h2>Decorators</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="decorators/failure.html">failure</a></td>
+		<td class="summary">The failure node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will always return a failed status
+ unless the decorated (child) node is still running.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="decorators/inverter.html">inverter</a></td>
+		<td class="summary">The inverter node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will invert
+ failures into successes as well as successes into failures.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="decorators/repeater.html">repeater</a></td>
+		<td class="summary">The repeater node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will run and rerun its child node a configured
+ number of times.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="decorators/success.html">success</a></td>
+		<td class="summary">The success node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will always return a success status
+ unless the child node is still running.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="decorators/until_failure.html">until_failure</a></td>
+		<td class="summary">The until-failure node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will only return success
+ when the child node fails; otherwise, it will reset the child and run it again on the next run of this node.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="decorators/until_success.html">until_success</a></td>
+		<td class="summary">The until-success node inherits from the <a href="base/decorator.html#">decorator</a> base node class and will only return success
+ when the child node succeeds; otherwise, it will reset the child and run it again on the next run of this node.</td>
+	</tr>
+</table>
+<h2>Modules</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="modules/behaviors.html">behaviors</a></td>
+		<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/bt_mobs.html">bt_mobs</a></td>
+		<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2>Guides</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="guides/01_getting_started.md.html">01_getting_started.md</a></td>
+		<td class="summary"></td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="guides/02_owl_bt.md.html">02_owl_bt.md</a></td>
+		<td class="summary"></td>
+	</tr>
+</table>
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-08-03 18:22:31 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

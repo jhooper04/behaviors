@@ -5,6 +5,7 @@ behaviors = {}
 dofile(path .. "/src/registry.lua")
 dofile(path .. "/src/builder.lua")
 dofile(path .. "/src/class.lua")
+dofile(path .. "/src/enums.lua")
 dofile(path .. "/src/tree.lua")
 
 bt_mobs = {}
@@ -24,8 +25,8 @@ local node_types = {
     "actions/set_value",
     "actions/subtree",
 
-    "actions/mobs/dump_jump",
-    "actions/mobs/dump_walk",
+    "actions/mobs/dumb_jump",
+    "actions/mobs/dumb_walk",
     "actions/mobs/fall_over",
     "actions/mobs/free_jump",
     "actions/mobs/idle",

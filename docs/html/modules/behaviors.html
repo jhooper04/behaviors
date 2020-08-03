@@ -1,0 +1,601 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Behaviors API Documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+<div id="main">
+<!-- Menu -->
+<div id="navigation">
+<br/>
+<h1>Behaviors API</h1>
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Class_tree">Class tree </a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>behaviors</strong></li>
+  <li><a href="../modules/bt_mobs.html">bt_mobs</a></li>
+</ul>
+<h2>Base</h2>
+<ul class="nowrap">
+  <li><a href="../base/action.html">action</a></li>
+  <li><a href="../base/composite.html">composite</a></li>
+  <li><a href="../base/condition.html">condition</a></li>
+  <li><a href="../base/decorator.html">decorator</a></li>
+  <li><a href="../base/node.html">node</a></li>
+  <li><a href="../base/precondition.html">precondition</a></li>
+</ul>
+<h2>Actions</h2>
+<ul class="nowrap">
+  <li><a href="../actions/dumb_jump.html">dumb_jump</a></li>
+  <li><a href="../actions/dumb_walk.html">dumb_walk</a></li>
+  <li><a href="../actions/execute.html">execute</a></li>
+  <li><a href="../actions/execute_shared.html">execute_shared</a></li>
+  <li><a href="../actions/fall_over.html">fall_over</a></li>
+  <li><a href="../actions/free_jump.html">free_jump</a></li>
+  <li><a href="../actions/idle.html">idle</a></li>
+  <li><a href="../actions/jump_attack.html">jump_attack</a></li>
+  <li><a href="../actions/jump_out.html">jump_out</a></li>
+  <li><a href="../actions/set_shared_value.html">set_shared_value</a></li>
+  <li><a href="../actions/set_value.html">set_value</a></li>
+  <li><a href="../actions/subtree.html">subtree</a></li>
+  <li><a href="../actions/turn_to_pos.html">turn_to_pos</a></li>
+</ul>
+<h2>Composites</h2>
+<ul class="nowrap">
+  <li><a href="../composites/parallel.html">parallel</a></li>
+  <li><a href="../composites/selector.html">selector</a></li>
+  <li><a href="../composites/sequence.html">sequence</a></li>
+</ul>
+<h2>Conditions</h2>
+<ul class="nowrap">
+  <li><a href="../conditions/compare.html">compare</a></li>
+  <li><a href="../conditions/has_shared_value.html">has_shared_value</a></li>
+  <li><a href="../conditions/has_value.html">has_value</a></li>
+  <li><a href="../conditions/random.html">random</a></li>
+</ul>
+<h2>Decorators</h2>
+<ul class="nowrap">
+  <li><a href="../decorators/failure.html">failure</a></li>
+  <li><a href="../decorators/inverter.html">inverter</a></li>
+  <li><a href="../decorators/repeater.html">repeater</a></li>
+  <li><a href="../decorators/success.html">success</a></li>
+  <li><a href="../decorators/until_failure.html">until_failure</a></li>
+  <li><a href="../decorators/until_success.html">until_success</a></li>
+</ul>
+<h2>Guides</h2>
+<ul class="nowrap">
+  <li><a href="../guides/01_getting_started.md.html">Getting Started</a></li>
+  <li><a href="../guides/02_owl_bt.md.html">Example Owl BT Config</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>behaviors</code></h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#class">class (name[, base[, is_abstract]])</a></td>
+	<td class="summary">class utility for creating object oriented inheritance hierarchies of tree nodes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#load_json_file">load_json_file (path)</a></td>
+	<td class="summary">Loads an owlbt format json file, parses it into a table, and converts it into the behaviors mod format.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#construct_nodes">construct_nodes (source)</a></td>
+	<td class="summary">Instantiates nodes from a behavior tree definition table using the registered <a href="../base/node.html#">node</a> types.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#load_module">load_module (name, path)</a></td>
+	<td class="summary">Loads a behavior tree definition table, converts it to behavior mod format, and registers it as a module subtree.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_module">build_module (name)</a></td>
+	<td class="summary">Instantiates a registered module subtree definition table (already converted from owlbt definition).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_owl_tree">build_owl_tree (owlbt_source)</a></td>
+	<td class="summary">Instantiates behavior <a href="../modules/behaviors.html#tree">tree</a> from an owl bt tree definition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#load_and_build_owl_tree">load_and_build_owl_tree (path)</a></td>
+	<td class="summary">Loads owlbt json file, converts it to behaviors mod format, and instantiates it all at once from a file path.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#register_node">register_node (name, node)</a></td>
+	<td class="summary">Registers a <a href="../base/node.html#">node</a> type to be used with the tree builder and owlbt json files.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#register_module">register_module (name, source)</a></td>
+	<td class="summary">Registers a subtree module that can be used as a single subtree action node for modularity and simpler trees
+ with complex behaviors.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_node">get_node (name)</a></td>
+	<td class="summary">Gets a registered node class type by name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_module">get_module (name)</a></td>
+	<td class="summary">Gets a registered subtree module definition by name.</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#states">states</a></td>
+	<td class="summary">Enum table of possible node states</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#parallel_strategy">parallel_strategy</a></td>
+	<td class="summary">Enum table of possible parallel strategies for use with the parallel node class</td>
+	</tr>
+</table>
+<h2><a href="#Class_tree">Class tree </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#tree:constructor">tree:constructor (root_node)</a></td>
+	<td class="summary">Constructs a tree class instance</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:set_object">tree:set_object (object)</a></td>
+	<td class="summary">Sets the object that this tree will operate on where every <a href="../base/node.html#">node</a> will have access to it</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:set_shared_object">tree:set_shared_object (object)</a></td>
+	<td class="summary">Sets an object that many tree instances can share</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:run">tree:run (any)</a></td>
+	<td class="summary">Runs one step of the tree starting with the root <a href="../base/node.html#">node</a> which runs it's children
+ until the entire tree is processed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:is_finished">tree:is_finished ()</a></td>
+	<td class="summary">Checks if the tree is finished processing it's nodes.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:is_started">tree:is_started ()</a></td>
+	<td class="summary">Checks if the tree has been ran since initialization or the last time it was reset</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree:reset">tree:reset ()</a></td>
+	<td class="summary">Resets the entire <a href="../base/node.html#">node</a> tree structure so it may be rerun</td>
+	</tr>
+</table>
+<br/>
+<br/>
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "class"></a>
+    <strong>class (name[, base[, is_abstract]])</strong>
+    </dt>
+    <dd>
+    class utility for creating object oriented inheritance hierarchies of tree nodes
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the new class to create
+        </li>
+        <li><span class="parameter">base</span>
+            <span class="types"><span class="type">tab</span></span>
+         The Base class of the new class to inherit from
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">is_abstract</span>
+            <span class="types"><span class="type">bool</span></span>
+         Defines whether or not this class should be directly used as a node type in a behavior tree
+         (<em>optional</em>)
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">tab</span></span>
+        New class type
+    </ol>
+</dd>
+    <dt>
+    <a name = "load_json_file"></a>
+    <strong>load_json_file (path)</strong>
+    </dt>
+    <dd>
+    Loads an owlbt format json file, parses it into a table, and converts it into the behaviors mod format.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><span class="type">string</span></span>
+         The file path of the owlbt json file to load.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">tab</span></span>
+        The parsed and converted behavior tree definition table.
+    </ol>
+</dd>
+    <dt>
+    <a name = "construct_nodes"></a>
+    <strong>construct_nodes (source)</strong>
+    </dt>
+    <dd>
+    Instantiates nodes from a behavior tree definition table using the registered <a href="../base/node.html#">node</a> types.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">source</span>
+            <span class="types"><span class="type">tab</span></span>
+         The behavior tree defnition table.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">node</span></span>
+        The root node of the instantiated node tree.
+    </ol>
+</dd>
+    <dt>
+    <a name = "load_module"></a>
+    <strong>load_module (name, path)</strong>
+    </dt>
+    <dd>
+    Loads a behavior tree definition table, converts it to behavior mod format, and registers it as a module subtree.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name to register the subtree module as.
+        </li>
+        <li><span class="parameter">path</span>
+            <span class="types"><span class="type">string</span></span>
+         The file path to the owlbt json file defining the behavior tree.
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "build_module"></a>
+    <strong>build_module (name)</strong>
+    </dt>
+    <dd>
+    Instantiates a registered module subtree definition table (already converted from owlbt definition).
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the registered subtree module.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">node</span></span>
+        The root node of the instantiated node tree.
+    </ol>
+</dd>
+    <dt>
+    <a name = "build_owl_tree"></a>
+    <strong>build_owl_tree (owlbt_source)</strong>
+    </dt>
+    <dd>
+    Instantiates behavior <a href="../modules/behaviors.html#tree">tree</a> from an owl bt tree definition.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">owlbt_source</span>
+            <span class="types"><span class="type">tab</span> or <span class="type">string</span></span>
+         unconverted owl bt tree definition table or the string to parse into a table.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/behaviors.html#tree">tree</a></span>
+        The instantiated behavior tree.
+    </ol>
+</dd>
+    <dt>
+    <a name = "load_and_build_owl_tree"></a>
+    <strong>load_and_build_owl_tree (path)</strong>
+    </dt>
+    <dd>
+    Loads owlbt json file, converts it to behaviors mod format, and instantiates it all at once from a file path.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><span class="type">string</span></span>
+         The owlbt json file path to load and instantiate.
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "register_node"></a>
+    <strong>register_node (name, node)</strong>
+    </dt>
+    <dd>
+    Registers a <a href="../base/node.html#">node</a> type to be used with the tree builder and owlbt json files.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the node type to register
+        </li>
+        <li><span class="parameter">node</span>
+            <span class="types"><span class="type">node</span></span>
+         The node type class to register
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "register_module"></a>
+    <strong>register_module (name, source)</strong>
+    </dt>
+    <dd>
+    Registers a subtree module that can be used as a single subtree action node for modularity and simpler trees
+ with complex behaviors.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the subtree module to register
+        </li>
+        <li><span class="parameter">source</span>
+            <span class="types"><span class="type">tab</span></span>
+         The parsed (and already converted from owlbt) subtree definition table.
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "get_node"></a>
+    <strong>get_node (name)</strong>
+    </dt>
+    <dd>
+    Gets a registered node class type by name.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the registered node type to get
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">node</span></span>
+        Registered node type class
+    </ol>
+</dd>
+    <dt>
+    <a name = "get_module"></a>
+    <strong>get_module (name)</strong>
+    </dt>
+    <dd>
+    Gets a registered subtree module definition by name.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the registered module definition to get.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">tab</span></span>
+        Returns the subtree definition table.
+    </ol>
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "states"></a>
+    <strong>states</strong>
+    </dt>
+    <dd>
+    Enum table of possible node states
+    </ul>
+    </ul>
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">RUNNING</span>
+         The node state when it is not done running
+        </li>
+        <li><span class="parameter">FAILED</span>
+         The node state when it fails
+        </li>
+        <li><span class="parameter">SUCCESS</span>
+         The node state when it succeeds
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "parallel_strategy"></a>
+    <strong>parallel_strategy</strong>
+    </dt>
+    <dd>
+    Enum table of possible parallel strategies for use with the parallel node class
+    </ul>
+    </ul>
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">FAIL_CERTAIN</span>
+         This makes <a href="../composites/parallel.html#">parallel</a> nodes fail when the number of failures reaches the target count.
+        </li>
+        <li><span class="parameter">PASS_CERTAIN</span>
+         This makes <a href="../composites/parallel.html#">parallel</a> nodes succeed when the number of success reaches the target count.
+        </li>
+    </ul>
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_tree"></a>Class tree </h2>
+
+          <div class="section-description">
+          Encapsulate the root <a href="../base/node.html#">node</a> of a behavior tree
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "tree:constructor"></a>
+    <strong>tree:constructor (root_node)</strong>
+    </dt>
+    <dd>
+    Constructs a tree class instance
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">root_node</span>
+            <span class="types"><span class="type">node</span></span>
+         The root <a href="../base/node.html#">node</a> of the tree class instance
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "tree:set_object"></a>
+    <strong>tree:set_object (object)</strong>
+    </dt>
+    <dd>
+    Sets the object that this tree will operate on where every <a href="../base/node.html#">node</a> will have access to it
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">tab</span></span>
+         The object that the behavior tree will operate on
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "tree:set_shared_object"></a>
+    <strong>tree:set_shared_object (object)</strong>
+    </dt>
+    <dd>
+    Sets an object that many tree instances can share
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">tab</span></span>
+         The shared object
+        </li>
+    </ul>
+</dd>
+    <dt>
+    <a name = "tree:run"></a>
+    <strong>tree:run (any)</strong>
+    </dt>
+    <dd>
+    Runs one step of the tree starting with the root <a href="../base/node.html#">node</a> which runs it's children
+ until the entire tree is processed.
+    </ul>
+    </ul>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">any</span>
+         Any parameters are passed down the tree of nodes to each call of the child nodes' run methods.
+        </li>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+        A string representing the enum <a href="../modules/behaviors.html#states">behaviors.states</a> of "running", "success", or "failed".
+    </ol>
+</dd>
+    <dt>
+    <a name = "tree:is_finished"></a>
+    <strong>tree:is_finished ()</strong>
+    </dt>
+    <dd>
+    Checks if the tree is finished processing it's nodes.  For most cases the tree is
+ reset and run again once it finishes.
+    </ul>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Whether the tree is finished running or not
+    </ol>
+</dd>
+    <dt>
+    <a name = "tree:is_started"></a>
+    <strong>tree:is_started ()</strong>
+    </dt>
+    <dd>
+    Checks if the tree has been ran since initialization or the last time it was reset
+    </ul>
+    </ul>
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Whether the tree has been started or not
+    </ol>
+</dd>
+    <dt>
+    <a name = "tree:reset"></a>
+    <strong>tree:reset ()</strong>
+    </dt>
+    <dd>
+    Resets the entire <a href="../base/node.html#">node</a> tree structure so it may be rerun
+    </ul>
+    </ul>
+</dd>
+</dl>
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-08-03 18:22:31 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
