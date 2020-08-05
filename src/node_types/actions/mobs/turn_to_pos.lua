@@ -23,7 +23,7 @@ end
 function turn_to_pos:on_step(...)
     local pos = self.object.object:get_pos()
 
-	if bt_mobs.turn2yaw(self,
+	if bt_mobs.turn2yaw(self.object,
             minetest.dir_to_yaw(vector.direction(pos,self.object.target_pos))) then
         return self:succeed()
     else

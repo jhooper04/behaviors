@@ -859,7 +859,7 @@ function bt_mobs.on_step(self, dtime)
         self:on_brain_step(dtime)
     end
 
-	if self.behavior_tree then
+	if self.behavior_tree and bt_mobs.exists(self.object) then
 		if self.behavior_tree:is_finished() then
             self.behavior_tree:reset()
         end
@@ -901,9 +901,9 @@ function bt_mobs.default_physics(self)
 
 	if self.is_on_ground and not self.is_in_liquid then
 		self.object:set_velocity({
-			x = (vel.x > 0.2) and (vel.x*behaviors.mob_friction) or 0,
+			x = (vel.x > 0.2) and (vel.x*bt_mobs.friction) or 0,
 			y = vel.y,
-			z = (vel.z > 0.2) and (vel.z*behaviors.mob_friction) or 0
+			z = (vel.z > 0.2) and (vel.z*bt_mobs.friction) or 0
 		})
 	end
 	

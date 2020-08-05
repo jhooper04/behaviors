@@ -23,7 +23,7 @@ end
 -- @string name The name of the registered node type to get
 -- @treturn node Registered node type class
 function behaviors.get_node(name)
-    assert(type(name) == 'string' and behaviors._registered_nodes[name])
+    assert(type(name) == 'string' and behaviors._registered_nodes[name], "Unregistered node name: "..name)
     return behaviors._registered_nodes[name]
 end
 
@@ -31,6 +31,6 @@ end
 -- @string name The name of the registered module definition to get.
 -- @treturn tab Returns the subtree definition table.
 function behaviors.get_module(name)
-    assert(type(name) == 'string' and behaviors._registered_modules[name])
+    assert(type(name) == 'string' and behaviors._registered_modules[name], "Unregistered module name: "..name)
     return behaviors._registered_modules[name]
 end

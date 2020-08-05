@@ -47,7 +47,7 @@ end
 -- @function on_start
 -- @param any Any parameters passed to parent node's run call
 function jump_attack:on_start()
-    self.target_box = self.object.target_entity.object:get_properties().collisionbox
+    self.target_box = self.object.target_entity:get_properties().collisionbox
 end
 
 --- The main method that handles the processing for this @{jump_attack} node. This node will cause the mob to
@@ -87,7 +87,7 @@ function jump_attack:on_step(...)
         self.object.object:set_velocity(dir)
         self.phase = 3
     elseif self.phase == 3 then	-- in air
-        local tgtpos = self.object.target_entity.object:get_pos()
+        local tgtpos = self.object.target_entity:get_pos()
         local pos = self.object.object:get_pos()
         -- calculate attack spot
         local yaw = self.object:get_yaw()
@@ -95,7 +95,7 @@ function jump_attack:on_step(...)
         local apos = bt_mobs.pos_translate2d(pos, yaw, self.object.attack.range)
 
         if bt_mobs.is_pos_in_box(apos, tgtpos, self.target_box) then	--bite
-            self.object.target_entity.object:punch(self.object.object, 1, self.object.attack)
+            self.object.target_entity:punch(self.object.object, 1, self.object.attack)
                 -- bounce off
             local vy = self.object.object:get_velocity().y
             self.object.object:set_velocity({ x=dir.x * -3, y=vy, z=dir.z * -3})
@@ -110,7 +110,7 @@ end
 -- Object requirements
 ----------------------------------
 
--- target_entity - (table) the lua entity table of the target to attack
+-- target_entity - (userdata) the userdata entity of the target to attack
 -- target_height - (number) the height target of the jump attack
 
 -- Properties

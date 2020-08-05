@@ -58,10 +58,10 @@ function dumb_walk:on_step(...)
         return self:succeed()
     end
 
-    if self.is_on_ground then
+    if self.object.is_on_ground then
         local dir = vector.normalize(vector.direction({ x=pos.x, y=0, z=pos.z },
                                                     { x=self.object.target_pos.x, y=0, z=self.object.target_pos.z }))
-        dir = vector.multiply(dir, self.max_speed * self.speed_factor)
+        dir = vector.multiply(dir, self.object.max_speed * self.speed_factor)
 
         bt_mobs.turn2yaw(self.object, minetest.dir_to_yaw(dir))
         dir.y = y
