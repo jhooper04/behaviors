@@ -26,22 +26,6 @@
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Tables">Tables</a></li>
 </ul>
-<h2>Conditions</h2>
-<ul class="nowrap">
-  <li><strong>compare</strong></li>
-  <li><a href="../conditions/has_shared_value.html">has_shared_value</a></li>
-  <li><a href="../conditions/has_value.html">has_value</a></li>
-  <li><a href="../conditions/random.html">random</a></li>
-</ul>
-<h2>Base</h2>
-<ul class="nowrap">
-  <li><a href="../base/action.html">action</a></li>
-  <li><a href="../base/composite.html">composite</a></li>
-  <li><a href="../base/condition.html">condition</a></li>
-  <li><a href="../base/decorator.html">decorator</a></li>
-  <li><a href="../base/node.html">node</a></li>
-  <li><a href="../base/precondition.html">precondition</a></li>
-</ul>
 <h2>Actions</h2>
 <ul class="nowrap">
   <li><a href="../actions/dumb_jump.html">dumb_jump</a></li>
@@ -54,7 +38,7 @@
   <li><a href="../actions/get_nearby_entity.html">get_nearby_entity</a></li>
   <li><a href="../actions/get_nearby_player.html">get_nearby_player</a></li>
   <li><a href="../actions/get_random_pos.html">get_random_pos</a></li>
-  <li><a href="../actions/get_target_pos.html">get_target_pos</a></li>
+  <li><strong>get_target_pos</strong></li>
   <li><a href="../actions/idle.html">idle</a></li>
   <li><a href="../actions/jump_attack.html">jump_attack</a></li>
   <li><a href="../actions/jump_out.html">jump_out</a></li>
@@ -63,11 +47,27 @@
   <li><a href="../actions/subtree.html">subtree</a></li>
   <li><a href="../actions/turn_to_pos.html">turn_to_pos</a></li>
 </ul>
+<h2>Base</h2>
+<ul class="nowrap">
+  <li><a href="../base/action.html">action</a></li>
+  <li><a href="../base/composite.html">composite</a></li>
+  <li><a href="../base/condition.html">condition</a></li>
+  <li><a href="../base/decorator.html">decorator</a></li>
+  <li><a href="../base/node.html">node</a></li>
+  <li><a href="../base/precondition.html">precondition</a></li>
+</ul>
 <h2>Composites</h2>
 <ul class="nowrap">
   <li><a href="../composites/parallel.html">parallel</a></li>
   <li><a href="../composites/selector.html">selector</a></li>
   <li><a href="../composites/sequence.html">sequence</a></li>
+</ul>
+<h2>Conditions</h2>
+<ul class="nowrap">
+  <li><a href="../conditions/compare.html">compare</a></li>
+  <li><a href="../conditions/has_shared_value.html">has_shared_value</a></li>
+  <li><a href="../conditions/has_value.html">has_value</a></li>
+  <li><a href="../conditions/random.html">random</a></li>
 </ul>
 <h2>Decorators</h2>
 <ul class="nowrap">
@@ -90,30 +90,28 @@
 </ul>
 </div>
 <div id="content">
-<h1>Condition <code>compare</code></h1>
-<p>Compare nodes inherit from the <a href="../base/condition.html#">condition</a> base node class and will check a property of the node's set object.</p>
-<p> It is essentially a node that represents an if statement that will either succeed or fail if the
- configured expression is true or false.</p>
+<h1>Action <code>get_target_pos</code></h1>
+<p>The get<em>target</em>pos node inherits from the <a href="../base/action.html#">action</a> base node class and gets the target pos of the currently
+ targeted entity.</p>
+<p>
+
+</p>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name" nowrap><a href="#constructor">constructor (config)</a></td>
-	<td class="summary">Constructs a <a href="../conditions/compare.html#">compare</a> node class instance.</td>
+	<td class="summary">Constructs a <a href="../actions/get_target_pos.html#">get_target_pos</a> node class instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#get_value">get_value ()</a></td>
-	<td class="summary">Gets the configured value on the node's object and converts the data type.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#check_condition">check_condition (...)</a></td>
-	<td class="summary">The main method that handles the conditional comparison checking for this <a href="../conditions/compare.html#">compare</a> node.</td>
+	<td class="name" nowrap><a href="#on_step">on_step (...)</a></td>
+	<td class="summary">The main method that handles the processing for this <a href="../actions/get_target_pos.html#">get_target_pos</a> node.</td>
 	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#config">config</a></td>
-	<td class="summary">Configuration table passed into the constructor function.</td>
+	<td class="name" nowrap><a href="#object">object</a></td>
+	<td class="summary">Properties that get set on the node's object</td>
 	</tr>
 </table>
 <br/>
@@ -126,38 +124,24 @@
     <strong>constructor (config)</strong>
     </dt>
     <dd>
-    Constructs a <a href="../conditions/compare.html#">compare</a> node class instance.
+    Constructs a <a href="../actions/get_target_pos.html#">get_target_pos</a> node class instance.
     </ul>
     </ul>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">config</span>
-            <span class="types"><a class="type" href="../conditions/compare.html#config">config</a></span>
-         The configuration options for this <a href="../conditions/compare.html#">compare</a> node
+            <span class="types"><span class="type">config</span></span>
+         The configuration options for this <a href="../actions/get_target_pos.html#">get_target_pos</a> node
         </li>
     </ul>
 </dd>
     <dt>
-    <a name = "get_value"></a>
-    <strong>get_value ()</strong>
+    <a name = "on_step"></a>
+    <strong>on_step (...)</strong>
     </dt>
     <dd>
-    Gets the configured value on the node's object and converts the data type.
-    </ul>
-    </ul>
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">string</span>, <span class="type">number</span> or <span class="type">bool</span></span>
-        value to be used in the comparison check condition.
-    </ol>
-</dd>
-    <dt>
-    <a name = "check_condition"></a>
-    <strong>check_condition (...)</strong>
-    </dt>
-    <dd>
-    The main method that handles the conditional comparison checking for this <a href="../conditions/compare.html#">compare</a> node.
+    The main method that handles the processing for this <a href="../actions/get_target_pos.html#">get_target_pos</a> node.  This node will set the target
+ position property on the object from the target entity's current position.
     </ul>
     </ul>
     <h3>Parameters:</h3>
@@ -169,8 +153,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">bool</span></span>
-        True if the comparison succeeded or false if the comparison failed.
+        A string representing the enum <a href="../modules/behaviors.html#states">behaviors.states</a> of success", or "failed".
     </ol>
 </dd>
 </dl>
@@ -178,30 +161,22 @@
 
     <dl class="function">
     <dt>
-    <a name = "config"></a>
-    <strong>config</strong>
+    <a name = "object"></a>
+    <strong>object</strong>
     </dt>
     <dd>
-    Configuration table passed into the constructor function.
+    Properties that get set on the node's object
     </ul>
     </ul>
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><span class="type">string</span></span>
-         The key on the node's associated set object to read for comparison.
+        <li><span class="parameter">target_pos</span>
+            <span class="types"><span class="type">vector</span></span>
+         The target position that will be updated.
         </li>
-        <li><span class="parameter">data_type</span>
-            <span class="types"><span class="type">string</span></span>
-         The data type of the keyed property and value. Currently supports 'bool','string','number'.
-        </li>
-        <li><span class="parameter">value</span>
-            <span class="types"><span class="type">string</span></span>
-         The value to compare with the keyed property. if starts with '$' then value is another key.
-        </li>
-        <li><span class="parameter">predicate</span>
-            <span class="types"><span class="type">string</span></span>
-         The comparison operator. Can be '~=','==','>=','&lt;=','>', or '&lt;'
+        <li><span class="parameter">target_entity</span>
+            <span class="types"><span class="type">userdata</span></span>
+         The targeted entity to get the current position from.
         </li>
     </ul>
 </dd>

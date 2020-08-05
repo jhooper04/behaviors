@@ -107,6 +107,30 @@
                 ]
             },
             {
+                "name": "dumb_step",
+                "base": "action",
+                "icon": "bolt",
+                "description": "Use $target_pos, $target_height",
+                "properties": [
+                    {
+                        "name": "jump_animation",
+                        "type": "string"
+                    },
+                    {
+                        "name": "walk_animation",
+                        "type": "string"
+                    },
+                    {
+                        "name": "speed_factor",
+                        "type": "number"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "number"
+                    }
+                ]
+            },
+            {
                 "name": "dumb_walk",
                 "base": "action",
                 "icon": "bolt",
@@ -156,9 +180,50 @@
                 ]
             },
             {
+                "name": "get_nearby_entity",
+                "base": "action",
+                "icon": "bolt",
+                "properties": [
+                    {
+                        "name": "entity_name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "range",
+                        "type": "number"
+                    }
+                ]
+            },
+            {
+                "name": "get_nearby_player",
+                "base": "action",
+                "icon": "bolt",
+                "properties": [
+                    {
+                        "name": "range",
+                        "type": "number"
+                    }
+                ]
+            },
+            {
+                "name": "get_random_pos",
+                "base": "action",
+                "icon": "bolt",
+                "description": "Set $target_pos, $target_height",
+                "properties": []
+            },
+            {
+                "name": "get_target_pos",
+                "base": "action",
+                "icon": "bolt",
+                "description": "Set $target_pos to $target_entity:get_pos()",
+                "properties": []
+            },
+            {
                 "name": "idle",
                 "base": "action",
                 "icon": "bolt",
+                "description": "{{duration}} seconds",
                 "properties": [
                     {
                         "name": "idle_animation",
@@ -207,6 +272,7 @@
                 "name": "turn_to_pos",
                 "base": "action",
                 "icon": "bolt",
+                "description": "Use $target_pos",
                 "properties": []
             },
             {
