@@ -26,6 +26,7 @@ local node_types = {
     "actions/subtree",
 
     "actions/mobs/dumb_jump",
+    "actions/mobs/dumb_step",
     "actions/mobs/dumb_walk",
     "actions/mobs/fall_over",
     "actions/mobs/free_jump",
@@ -33,6 +34,10 @@ local node_types = {
     "actions/mobs/jump_attack",
     "actions/mobs/jump_out",
     "actions/mobs/turn_to_pos",
+    "actions/mobs/get_nearby_entity",
+    "actions/mobs/get_nearby_player",
+    "actions/mobs/get_random_pos",
+    "actions/mobs/get_target_pos",
 
     "composites/parallel",
     "composites/selector",
